@@ -32,6 +32,10 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  body{
+    background: var(--blue-900);
+  }
+
   
 
   button{
