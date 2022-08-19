@@ -1,7 +1,5 @@
 import { GlobalStyle } from './styles/global';
 
-
-import { Container, BackgroundBall, Header, Content } from './styles/home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';

@@ -54,10 +54,14 @@ export const Header = styled.header`
 `;
 
 export const Content = styled.div`
-  @media(max-width: 800px) {
+  @media(max-width: 720px) {
     flex-direction: column;
-  }
 
+    .contentLeft{
+      margin-right: 0px;
+    }
+  }
+  
   display: flex;
   justify-content: space-between;
   align-items: center;

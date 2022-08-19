@@ -36,8 +36,6 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--blue-900);
   }
 
-  
-
   button{
     cursor: pointer;
   }
