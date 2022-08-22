@@ -18,6 +18,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
       onRequestClose={onRequestClose}
+      ariaHideApp={false}
     >
 
           

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
+import { api } from '../../services/api';
 
 interface NewUsersModalProps{
   isOpen: boolean;
@@ -9,7 +10,19 @@ interface NewUsersModalProps{
 }
 
 export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
-  const [name, setName] = useState('');
+  const [users, setUsers] = useState('');
+
+  useEffect(() => {
+    api.get('users').then(response => console.log(response.data))
+  })
+
+  function handleCreateNewUser(event: FormEvent){
+    event.preventDefault()
+
+    console.log(users)
+
+    setUsers('')
+  }
 
   return(
     <Modal 
@@ -17,8 +30,8 @@ export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
       onRequestClose={onRequestClose}
+      ariaHideApp={false}
     >
-
           
     <button
       type='button'
@@ -28,14 +41,14 @@ export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
       <FiX size={24}/>
     </button>
 
-    <Container>
+    <Container onSubmit={handleCreateNewUser}>
         <h2>Cadastrar usuário</h2>
 
         <input 
           type="text" 
           placeholder='Nome'
-          value={name}
-          onChange={ e => setName(e.target.value) }
+          value={users}
+          onChange={ e => setUsers(e.target.value) }
         />
 
         <button type='submit'>Cadastrar</button>
