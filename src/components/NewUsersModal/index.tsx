@@ -3,17 +3,6 @@ import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
 interface NewUsersModalProps{
   isOpen: boolean;
   onRequestClose: () => void;
@@ -25,7 +14,6 @@ export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
   return(
     <Modal 
       isOpen={isOpen}
-      //style={customStyles}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
       onRequestClose={onRequestClose}

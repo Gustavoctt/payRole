@@ -1,10 +1,11 @@
 import { Container, Content } from "./styles";
 
 interface HeaderProps{
-  onOpenNewUserModal: () => void
+  onOpenNewUserModal: () => void;
+  onOpenNewTransactionModal: () => void;
 }
 
-function Header({onOpenNewUserModal}: HeaderProps){
+function Header({onOpenNewUserModal, onOpenNewTransactionModal}: HeaderProps){
   return(
     <Container>
       <Content>
@@ -15,7 +16,9 @@ function Header({onOpenNewUserModal}: HeaderProps){
           <button 
             onClick={onOpenNewUserModal}
           >Cadastrar usuários</button>
-          <button>Cadastrar gastos</button>
+          <button
+            onClick={onOpenNewTransactionModal}
+          >Cadastrar gastos</button>
         </div>
       </Content>
     </Container>
