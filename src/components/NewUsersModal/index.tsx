@@ -11,17 +11,18 @@ interface NewUsersModalProps{
 
 export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
   const [users, setUsers] = useState('');
+  
 
-  useEffect(() => {
-    api.get('users').then(response => console.log(response.data))
-  })
+  async function handleCreateNewUser(event: FormEvent){
+    // event.preventDefault()
 
-  function handleCreateNewUser(event: FormEvent){
-    event.preventDefault()
+    // const response = await api.post('/users', {
+    //   users
+    // })
 
-    console.log(users)
+    // console.log(response.data)
 
-    setUsers('')
+    // setUsers('')
   }
 
   return(

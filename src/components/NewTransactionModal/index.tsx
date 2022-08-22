@@ -1,16 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
+import { api } from '../../services/api';
 
 interface NewTransactionModalProps{
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
+interface Users{
+  id: number;
+  name: string;
+}
+
 export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModalProps){
+  const [users, setUsers] = useState<Users[]>([])
+  
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
+
+
+  useEffect(() => {
+    api.get('users').then(response => setUsers(response.data))
+  }, [])
 
   return(
     <Modal 
@@ -48,9 +61,11 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
         />
 
         <select>
-          <option value="">Selecione</option>
-          <option value="user">Gustavo</option>
-          <option value="user">Pedro</option>
+          {users.map(user => {
+            return(
+              <option key={user.id} value={user.id}>{user.name}</option>
+            )
+          })}
         </select>
 
         <button type='submit'>Cadastrar</button>
