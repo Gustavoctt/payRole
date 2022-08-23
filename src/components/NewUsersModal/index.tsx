@@ -2,7 +2,8 @@ import { FormEvent, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
-import { api } from '../../services/api';
+import { useUsers } from '../../hooks/useUsers';
+
 
 interface NewUsersModalProps{
   isOpen: boolean;
@@ -10,19 +11,18 @@ interface NewUsersModalProps{
 }
 
 export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
-  const [users, setUsers] = useState('');
-  
+  const { createUser } = useUsers();
+
+  const [name, setName] = useState('');
 
   async function handleCreateNewUser(event: FormEvent){
-    // event.preventDefault()
+    event.preventDefault()
 
-    // const response = await api.post('/users', {
-    //   users
-    // })
-
-    // console.log(response.data)
-
-    // setUsers('')
+    await createUser({
+      name
+    })
+    setName('')
+    onRequestClose()
   }
 
   return(
@@ -48,8 +48,8 @@ export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
         <input 
           type="text" 
           placeholder='Nome'
-          value={users}
-          onChange={ e => setUsers(e.target.value) }
+          value={name}
+          onChange={ e => setName(e.target.value) }
         />
 
         <button type='submit'>Cadastrar</button>

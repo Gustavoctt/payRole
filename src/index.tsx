@@ -25,15 +25,7 @@ createServer({
           user: 'Pedro'
         }
       ],
-      users: [
-        {
-          id: 1,
-          name: 'Gustavo'
-        },
-        {
-          id: 2,
-          name: 'Marcos'
-        }
+      users: [      
       ]
     })
   },

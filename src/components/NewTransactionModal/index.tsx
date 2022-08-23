@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
 import { api } from '../../services/api';
+import { useUsers } from '../../hooks/useUsers';
 
 interface NewTransactionModalProps{
   isOpen: boolean;
@@ -15,15 +16,10 @@ interface Users{
 }
 
 export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModalProps){
-  const [users, setUsers] = useState<Users[]>([])
+  const { users } = useUsers();
   
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
-
-
-  useEffect(() => {
-    api.get('users').then(response => setUsers(response.data))
-  }, [])
 
   return(
     <Modal 
