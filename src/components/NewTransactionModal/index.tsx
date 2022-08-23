@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
-import { api } from '../../services/api';
 import { useUsers } from '../../hooks/useUsers';
 
 interface NewTransactionModalProps{
   isOpen: boolean;
   onRequestClose: () => void;
-}
-
-interface Users{
-  id: number;
-  name: string;
 }
 
 export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModalProps){
@@ -56,13 +50,15 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
           onChange={ e => setAmount(e.target.value) }
         />
 
-        <select>
-          {users.map(user => {
-            return(
-              <option key={user.id} value={user.id}>{user.name}</option>
-            )
-          })}
-        </select>
+        {users.length > 0 && (
+          <select>
+            {users.map(user => {
+              return(
+                <option key={user.id} value={user.id}>{user.name}</option>
+              )
+            })}
+          </select>
+        )}
 
         <button type='submit'>Cadastrar</button>
       </Container>

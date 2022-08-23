@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
