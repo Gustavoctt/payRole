@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { FiX } from 'react-icons/fi';
 import { useUsers } from '../../hooks/useUsers';
+import { useTransactions } from '../../hooks/useTransactions';
 
 interface NewTransactionModalProps{
   isOpen: boolean;
@@ -11,9 +12,25 @@ interface NewTransactionModalProps{
 
 export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModalProps){
   const { users } = useUsers();
-  
+  const { createTransaction } = useTransactions();
+
   const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
+  const [user, setUser] = useState('');
+    
+  function handleCreateTransaction(event: FormEvent){
+    event.preventDefault()
+
+    console.log(user)
+
+    // createTransaction({
+    //   title,
+    //   amount,
+    //  // user
+    // })
+
+    onRequestClose()
+  }
 
   return(
     <Modal 
@@ -33,7 +50,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
       <FiX size={24}/>
     </button>
 
-    <Container>
+    <Container onSubmit={handleCreateTransaction} >
         <h2>Cadastrar gastos</h2>
 
         <input 
@@ -47,11 +64,14 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
           type="text" 
           placeholder='Valor'
           value={amount}
-          onChange={ e => setAmount(e.target.value) }
+          onChange={ e => setAmount(Number(e.target.value)) }
         />
 
         {users.length > 0 && (
-          <select>
+          <select 
+           value={user}
+           onChange={e => setUser(e.target.value)}
+          >
             {users.map(user => {
               return(
                 <option key={user.id} value={user.id}>{user.name}</option>
