@@ -11,22 +11,8 @@ createServer({
   },
   seeds(server){
     server.db.loadData({
-      transactions: [
-        {
-          id: 1,
-          title: 'Compra de bebidas',
-          amount: 100,
-          user: 'Gustavo'
-        },
-        {
-          id: 2,
-          title: 'Ingressos',
-          amount: 80,
-          user: 'Pedro'
-        }
-      ],
-      users: [      
-      ]
+      transactions: [],
+      users: []
     })
   },
 

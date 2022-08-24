@@ -35,7 +35,6 @@ export function UsersProvider({ children }: UserProviderProps){
 
     setUsers([...users, user])
   }
-
   return(
     <UsersContext.Provider value={{ users, createUser }}>
       { children }

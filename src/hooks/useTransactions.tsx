@@ -5,10 +5,10 @@ interface Transactions {
   id: number;
   title: string;
   amount: number;
- // user: string;
+  user: string;
 }
 
-type TransactionInput = Pick<Transactions, 'title' | 'amount'>
+type TransactionInput = Pick<Transactions, 'title' | 'amount' | 'user'>
 
 interface TransactionProviderProps{
   children: ReactNode;
@@ -30,6 +30,7 @@ export function TransactionsProvider({ children }: TransactionProviderProps){
   }, [])
 
   async function createTransaction(transactionInput: TransactionInput){
+    //console.log(transactionInput)
     const response = await api.post('/transactions', {
       ...transactionInput
     })

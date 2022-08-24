@@ -16,18 +16,34 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
 
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
-  const [user, setUser] = useState('');
+  //const [user, setUser] = useState('');
+  const [selected, setSelected] = useState('');
+
+ // console.log(users)
+
+  function parseSelected(event: React.ChangeEvent<HTMLSelectElement>) {
+    const valueToParse = event.target.value;
+   // const itemSelected = JSON.parse(valueToParse);
+    setSelected(valueToParse);
+    return;
+  }
+
+  
     
   function handleCreateTransaction(event: FormEvent){
     event.preventDefault()
 
-    console.log(user)
+    console.log(selected)
+    
+    createTransaction({
+      title,
+      amount,
+      user: selected
+    })
 
-    // createTransaction({
-    //   title,
-    //   amount,
-    //  // user
-    // })
+    setTitle('')
+    setAmount(0)
+    setSelected('')
 
     onRequestClose()
   }
@@ -69,12 +85,12 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
 
         {users.length > 0 && (
           <select 
-           value={user}
-           onChange={e => setUser(e.target.value)}
+          onChange={parseSelected}
           >
+            <option value="">Selecione</option>
             {users.map(user => {
               return(
-                <option key={user.id} value={user.id}>{user.name}</option>
+                <option key={user.id} value={user.name}>{user.name}</option>
               )
             })}
           </select>

@@ -20,7 +20,7 @@ function TransactionTable(){
               <tr key={item.id}>
                 <td>{ item.title }</td>
                 <td>R$ { item.amount }</td>
-                {/* <td>{item.user}</td> */}
+                <td>{item.user}</td>
               </tr>
             )
           })}
