@@ -93,8 +93,18 @@ export const Container = styled.form`
     font-size: 1rem;
     font-weight: 700;
     color: var(--white);
-    
+    border-radius: 0.25rem;
+    transition: filter 0.3s;
     gap: 1rem;
+
+    &:disabled{
+      background-color: var(--gray-100);
+      cursor: not-allowed;
+    }
+
+    &:hover:not(&:disabled){ 
+      filter: brightness(0.9);
+    }
     
   }
   /* h2{

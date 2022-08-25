@@ -59,7 +59,7 @@ export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
         <FiUserPlus size={16}/>
       </div>
 
-        <button type='submit'>
+        <button type='submit' disabled={!name}>
           Cadastrar
           <RiAddFill size={20}/>
         </button>
