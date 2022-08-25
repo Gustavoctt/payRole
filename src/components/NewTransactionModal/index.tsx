@@ -1,9 +1,13 @@
 import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
-import { FiX } from 'react-icons/fi';
 import { useUsers } from '../../hooks/useUsers';
 import { useTransactions } from '../../hooks/useTransactions';
+
+import { FiX } from 'react-icons/fi';
+import { MdOutlineSubtitles } from 'react-icons/md';
+import {TbCash} from 'react-icons/tb';
+import {IoIosArrowDown} from 'react-icons/io';
 
 interface NewTransactionModalProps{
   isOpen: boolean;
@@ -15,35 +19,28 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
   const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState(0);
-  //const [user, setUser] = useState('');
-  const [selected, setSelected] = useState('');
+  const [amount, setAmount] = useState('');
+  const [selectedUser, setSelectedUser] = useState('');
 
- // console.log(users)
 
   function parseSelected(event: React.ChangeEvent<HTMLSelectElement>) {
     const valueToParse = event.target.value;
-   // const itemSelected = JSON.parse(valueToParse);
-    setSelected(valueToParse);
+    setSelectedUser(valueToParse);
     return;
   }
-
-  
     
   function handleCreateTransaction(event: FormEvent){
     event.preventDefault()
 
-    console.log(selected)
-    
     createTransaction({
       title,
       amount,
-      user: selected
+      user: selectedUser
     })
 
     setTitle('')
-    setAmount(0)
-    setSelected('')
+    setAmount('')
+    setSelectedUser('')
 
     onRequestClose()
   }
@@ -58,31 +55,42 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
     >
 
           
-    <button
-      type='button'
-      onClick={onRequestClose}
-      className='react-modal-close'
-      >
-      <FiX size={24}/>
-    </button>
 
     <Container onSubmit={handleCreateTransaction} >
+      <div>
         <h2>Cadastrar gastos</h2>
+        <button
+          type='button'
+          onClick={onRequestClose}
+          >
+          <FiX size={24}/>
+        </button>
+      </div>
 
+      <div className='text-input-container'>
         <input 
+          required
           type="text" 
-          placeholder='Titulo do Gasto'
           value={title}
           onChange={ e => setTitle(e.target.value) }
         />
+        <label>Titulo do gasto</label>
+        <MdOutlineSubtitles size={20}/>
+      </div>
 
+      <div className='text-input-container'>
         <input 
+          required
           type="text" 
-          placeholder='Valor'
           value={amount}
-          onChange={ e => setAmount(Number(e.target.value)) }
+          onChange={ e => setAmount(e.target.value) }
         />
+        <label htmlFor="">Valor</label>
+        <TbCash size={20}/>
+      </div>
 
+
+      <div className='text-select-container'>
         {users.length > 0 && (
           <select 
           onChange={parseSelected}
@@ -95,8 +103,15 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
             })}
           </select>
         )}
+        <IoIosArrowDown />
+      </div>
 
-        <button type='submit'>Cadastrar</button>
+      <button 
+        type='submit'
+        disabled={!title || !amount || !selectedUser}
+      >
+        Cadastrar
+      </button>
       </Container>
     </Modal >
   )

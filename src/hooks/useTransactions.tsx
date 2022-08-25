@@ -4,7 +4,7 @@ import { api } from "../services/api";
 interface Transactions {
   id: number;
   title: string;
-  amount: number;
+  amount: string;
   user: string;
 }
 
