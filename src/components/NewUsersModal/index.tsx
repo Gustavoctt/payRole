@@ -1,7 +1,8 @@
 import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
-import { FiX } from 'react-icons/fi';
+import { FiX, FiUserPlus } from 'react-icons/fi';
+import { RiAddFill } from 'react-icons/ri'
 import { useUsers } from '../../hooks/useUsers';
 
 
@@ -34,25 +35,34 @@ export function NewUsersModal({isOpen, onRequestClose}: NewUsersModalProps){
       ariaHideApp={false}
     >
           
-    <button
-      type='button'
-      onClick={onRequestClose}
-      className='react-modal-close'
-      >
-      <FiX size={24}/>
-    </button>
 
     <Container onSubmit={handleCreateNewUser}>
+      <div>
         <h2>Cadastrar usuário</h2>
+        <button
+          type='button'
+          onClick={onRequestClose}
+          >
+          <FiX size={24}/>
+        </button>
+      </div>
 
+      <div className='text-input-container'>
         <input 
+          required
           type="text" 
-          placeholder='Nome'
           value={name}
-          onChange={ e => setName(e.target.value) }
+          onChange={ e => setName(e.target.value) 
+          }
         />
+        <label htmlFor="">User</label>
+        <FiUserPlus size={16}/>
+      </div>
 
-        <button type='submit'>Cadastrar</button>
+        <button type='submit'>
+          Cadastrar
+          <RiAddFill size={20}/>
+        </button>
       </Container>
     </Modal >
   )
