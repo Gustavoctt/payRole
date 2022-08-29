@@ -76,6 +76,7 @@ export const Container = styled.form`
         left: 10px;
         background-color: #fff;
         padding:0 5px 0 5px;
+        font-weight: 700;
       }
     }
   }

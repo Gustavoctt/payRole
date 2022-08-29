@@ -8,6 +8,7 @@ import { FiX } from 'react-icons/fi';
 import { MdOutlineSubtitles } from 'react-icons/md';
 import {TbCash} from 'react-icons/tb';
 import {IoIosArrowDown} from 'react-icons/io';
+import { formatPrice } from '../../util/format';
 
 interface NewTransactionModalProps{
   isOpen: boolean;
@@ -28,9 +29,12 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
     setSelectedUser(valueToParse);
     return;
   }
-
   function handleAmount(event: React.ChangeEvent<HTMLInputElement>){
-    const result = event.target.value.replace(/\D/g, '');
+    var amount = event.target.value.replace(/\D/g, '');
+    let output = 0;
+    output = parseFloat(amount) / 100;
+
+    var result = formatPrice(output)
 
     setAmount(result)
   }

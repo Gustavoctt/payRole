@@ -35,16 +35,9 @@ export function TransactionsProvider({ children }: TransactionProviderProps){
     const response = await api.post('/transactions', {
       ...transactionInput
     })
-    const {id, title, amount, user} = response.data.transaction;
-
-    const newTransaction = {
-      id,
-      title,
-      amount: formatPrice(amount),
-      user
-    }
-
-    setTransactions([...transactions, newTransaction])
+    const {transaction} = response.data;
+    
+    setTransactions([...transactions, transaction])
   }
 
   return(
