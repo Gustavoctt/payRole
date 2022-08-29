@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
 import { useUsers } from '../../hooks/useUsers';
@@ -27,6 +27,12 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
     const valueToParse = event.target.value;
     setSelectedUser(valueToParse);
     return;
+  }
+
+  function handleAmount(event: React.ChangeEvent<HTMLInputElement>){
+    const result = event.target.value.replace(/\D/g, '');
+
+    setAmount(result)
   }
     
   function handleCreateTransaction(event: FormEvent){
@@ -72,7 +78,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
           required
           type="text" 
           value={title}
-          onChange={ e => setTitle(e.target.value) }
+          onChange={e =>  setTitle(e.target.value)}
         />
         <label>Titulo do gasto</label>
         <MdOutlineSubtitles size={20}/>
@@ -83,7 +89,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
           required
           type="text" 
           value={amount}
-          onChange={ e => setAmount(e.target.value) }
+          onChange={handleAmount}
         />
         <label htmlFor="">Valor</label>
         <TbCash size={20}/>

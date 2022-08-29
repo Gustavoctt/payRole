@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import { formatPrice } from "../util/format";
 
 interface Transactions {
   id: number;
@@ -34,12 +35,16 @@ export function TransactionsProvider({ children }: TransactionProviderProps){
     const response = await api.post('/transactions', {
       ...transactionInput
     })
+    const {id, title, amount, user} = response.data.transaction;
 
-    console.log(response.data)
+    const newTransaction = {
+      id,
+      title,
+      amount: formatPrice(amount),
+      user
+    }
 
-    const {transaction} = response.data;
-
-    setTransactions([...transactions, transaction])
+    setTransactions([...transactions, newTransaction])
   }
 
   return(
