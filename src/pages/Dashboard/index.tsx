@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../../components/Header";
 import { NewTrasanctionModal } from "../../components/NewTransactionModal";
 import { NewUsersModal } from "../../components/NewUsersModal";
+import { Summary } from "../../components/Summary";
 import TransactionTable from "../../components/TransactionTable";
 
 function Dashboard(){
@@ -26,10 +27,13 @@ function Dashboard(){
 
   return(
     <>
-      <Header 
+      <Header/>
+      
+      <Summary 
         onOpenNewUserModal={handleOpenNewUserModal}
         onOpenNewTransactionModal={handleOpenNewTransactionModal}
       />
+      
       <TransactionTable />
 
       <NewUsersModal 
