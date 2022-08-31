@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineAddShoppingCart } from 'react-icons/md';
+import { useTransactions } from "../../hooks/useTransactions";
 
 interface SummaryProps{
   onOpenNewUserModal: () => void;

@@ -3,12 +3,13 @@ import Modal from 'react-modal';
 import { Container } from './styles';
 import { useUsers } from '../../hooks/useUsers';
 import { useTransactions } from '../../hooks/useTransactions';
+import { formatPrice } from '../../util/format';
 
 import { FiX } from 'react-icons/fi';
 import { MdOutlineSubtitles } from 'react-icons/md';
 import {TbCash} from 'react-icons/tb';
 import {IoIosArrowDown} from 'react-icons/io';
-import { formatPrice } from '../../util/format';
+import { RiAddFill } from 'react-icons/ri'
 
 interface NewTransactionModalProps{
   isOpen: boolean;
@@ -121,6 +122,8 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
         disabled={!title || !amount || !selectedUser}
       >
         Cadastrar
+
+        <RiAddFill size={20} />
       </button>
       </Container>
     </Modal >
