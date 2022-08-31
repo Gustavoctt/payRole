@@ -9,7 +9,17 @@ export const GlobalStyle = createGlobalStyle`
     --green-600:#399e6a;
 
     --white: #FFFFFF;
-    --gray-100: #f1f1f1;
+    
+    --gray-50: #F7FAFC;
+    --gray-100: #edf2f7;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e0;
+    --gray-400: #a0aec0;
+    --gray-500: #718096;
+    --gray-600: #4a5568;
+    --gray-700: #2d3748;
+    --gray-800: #1a202c;
+    --gray-900: #171923;
   }
 
   *{
@@ -34,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    background: var(--blue-900);
+    background: var(--white);
   }
 
   button{

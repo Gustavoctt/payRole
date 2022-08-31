@@ -6,26 +6,33 @@ export const Container = styled.div`
   max-width: 1120px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
+  
+  h1{
+    color: var(--gray-800)
+  }
+`;
 
-  table{
-    width: 100%;
-    border-spacing: 0 0.5rem;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  border-top: 2px solid var(--gray-200);
 
-    th{
-      color: var(--white);
-      font-weight: 700;
-      padding: 1rem 2rem;
-      text-align: left;
-      line-height: 1.5rem;
+  div{
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    justify-items: start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-300);
+
+    p{
+      color: var(--gray-700)
     }
 
-    td{
-      padding: 1rem 2rem;
-      border: 0;
-      background: var(--blue-700);
-      color: var(--white);
-
-
+    strong{
+      color: var(--gray-800);
+      font-size: 1.2rem;
     }
   }
+  
 `;

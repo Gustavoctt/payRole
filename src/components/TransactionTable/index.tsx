@@ -1,31 +1,23 @@
 import { useTransactions } from "../../hooks/useTransactions";
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 
 function TransactionTable(){
   const { transactions } = useTransactions();
 
   return(
     <Container>
-      <table>
-        <thead>
-          <tr>
-            <th>Titulo</th>
-            <th>Valor</th>
-            <th>Pago por</th>
-          </tr>
-        </thead>
-        <tbody>
+      <h1>Transações</h1>
+      <Content>
           {transactions.map(item => {
             return(
-              <tr key={item.id}>
-                <td>{ item.title }</td>
-                <td>{ item.amount }</td>
-                <td>{item.user}</td>
-              </tr>
+              <div key={item.id}>
+                <p>{ item.title }</p>
+                <p>{item.user}</p>
+                <strong>{ item.amount }</strong>
+              </div>
             )
           })}
-        </tbody>
-      </table>  
+      </Content>  
     </Container>
   )
 }
