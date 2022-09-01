@@ -6,10 +6,11 @@ interface Transactions {
   id: number;
   title: string;
   amount: string;
+  price: number;
   user: string;
 }
 
-type TransactionInput = Pick<Transactions, 'title' | 'amount' | 'user'>
+type TransactionInput = Pick<Transactions, 'title' | 'amount' | 'user' | 'price'>
 
 interface TransactionProviderProps{
   children: ReactNode;

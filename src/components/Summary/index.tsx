@@ -2,6 +2,7 @@ import { Container } from "./styles";
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineAddShoppingCart } from 'react-icons/md';
 import { useTransactions } from "../../hooks/useTransactions";
+import { formatPrice } from "../../util/format";
 
 interface SummaryProps{
   onOpenNewUserModal: () => void;
@@ -9,13 +10,25 @@ interface SummaryProps{
 }
 
 export function Summary({ onOpenNewTransactionModal, onOpenNewUserModal }: SummaryProps  ){
+  const { transactions } = useTransactions();
+
+  const totalPrice = transactions.reduce((acc, transaction) => {
+    acc.price += transaction.price;
+    return acc;
+  }, {
+    price: 0
+  })
+
+  
+  var priceFormatted = formatPrice(totalPrice.price);
+
   return(
     <Container>
       
       <div className="content">
         <div className="transactions">
           <h2>Total</h2>
-          <h1>R$ 100,00</h1>
+          <h1>{ priceFormatted }</h1>
         </div>
         <div className="buttons">
           <button onClick={onOpenNewUserModal}>

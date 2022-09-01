@@ -22,6 +22,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
 
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
+  const [price, setPrice] = useState(0);
   const [selectedUser, setSelectedUser] = useState('');
 
 
@@ -35,6 +36,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
     let output = 0;
     output = parseFloat(amount) / 100;
 
+    setPrice(output)
     var result = formatPrice(output)
 
     setAmount(result)
@@ -46,6 +48,7 @@ export function NewTrasanctionModal({isOpen, onRequestClose}: NewTransactionModa
     createTransaction({
       title,
       amount,
+      price,
       user: selectedUser
     })
 
