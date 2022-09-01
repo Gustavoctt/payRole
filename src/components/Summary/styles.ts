@@ -6,7 +6,7 @@ export const Container = styled.section`
  
  background: var(--blue-700);
  border-radius: 0 0 32px 32px;
- 
+
  .content{
     max-width: 980px;
     margin: 0 auto;
@@ -73,9 +73,23 @@ export const Container = styled.section`
         svg{
           margin-left: 1rem;
         }
-
       }
   }
   }
+
+  @media(max-width: 800px) {
+      .content{
+        display: flex;
+        flex-direction: column;
+
+        .transactions{
+          margin-bottom: 2rem;
+
+          h1{
+            font-size: 40px;
+          }
+        }
+      }
+    }
 
 `;
