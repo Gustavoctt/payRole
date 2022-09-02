@@ -42,6 +42,15 @@ export function Summary({ onOpenNewTransactionModal, onOpenNewUserModal }: Summa
         </div>
       </div>
 
+      <div className="button-mobile">
+        <button onClick={onOpenNewUserModal}>
+          <FiUserPlus size={20}/>
+        </button>
+        <button onClick={onOpenNewTransactionModal}>
+          <MdOutlineAddShoppingCart size={20}/>
+        </button>
+      </div>
+
     </Container>
   )
 }

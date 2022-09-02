@@ -7,7 +7,7 @@ export const Container = styled.section`
  background: var(--blue-700);
  border-radius: 0 0 32px 32px;
 
- .content{
+  .content{
     max-width: 980px;
     margin: 0 auto;
     padding: 4rem 0;
@@ -74,8 +74,10 @@ export const Container = styled.section`
           margin-left: 1rem;
         }
       }
+    }
   }
-  }
+
+ 
 
   @media(max-width: 800px) {
       .content{
@@ -89,7 +91,34 @@ export const Container = styled.section`
             font-size: 40px;
           }
         }
+        .buttons{
+          display: none;
+        }
+      }
+      .button-mobile{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+  
+        display: flex;
+        flex-direction: column;
+  
+        button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          width: 40px;
+          height: 40px;
+          background: var(--green-500);
+          color: var(--white);
+          border: 0;
+          margin: 1rem;
+          border-radius: 0.25rem;
+  
+        }
       }
     }
+
 
 `;
