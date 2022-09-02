@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.form`
   display: flex;
   flex-direction: column;
@@ -14,7 +13,8 @@ export const Container = styled.form`
     margin-bottom: 2rem;
 
     h2{
-      color: var(--blue-700);      
+      color: var(--blue-700);
+      font-size: 1.2rem ;
     }
 
     button{
@@ -76,6 +76,7 @@ export const Container = styled.form`
         left: 10px;
         background-color:#fff;
         padding:0 5px 0 5px;
+        font-weight: 700;
       }
     }
   }

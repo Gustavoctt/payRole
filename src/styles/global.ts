@@ -80,6 +80,14 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-animation-fill-mode: forwards;
   }
 
+  @media(max-width: 800px) {
+    .react-modal-content{
+      width: 100%;
+      max-width: 300px;
+      padding: 1.5rem;
+    }
+  }
+
   @keyframes animateModal {
   0% {
     top: 20px;
